@@ -41,7 +41,7 @@ export default function Navbar() {
           >
             <div className="w-2 h-2 rounded-full bg-green-400" />
             <Link href="/" className="font-bold tracking-tight text-2xl">
-              Josh<span className="text-black">.</span>designs
+              Josh<span>.</span>designs
             </Link>
           </motion.div>
 

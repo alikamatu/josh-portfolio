@@ -1,83 +1,70 @@
 "use client";
 
-import { motion, Variants,   } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { CLIENT_LIST, EXPERIENCE_YEARS, SKILL_CATEGORIES } from "@/utils/constants";
+import { CLIENT_LIST, SKILLS } from "@/utils/constants";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.25,
-      delayChildren: 0.4,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
 const titleVariants: Variants = {
-  hidden: { y: 100, opacity: 0, filter: "blur(10px)" },
+  hidden: { y: 60, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    filter: "blur(0px)",
-    transition: { type: "spring", damping: 12, stiffness: 80, duration: 1.4 },
+    transition: { 
+      type: "spring", 
+      damping: 15, 
+      stiffness: 100, 
+      duration: 0.8 
+    },
   },
 };
 
 const photoVariants: Variants = {
-  hidden: { scale: 0.9, opacity: 0, filter: "blur(12px)" },
+  hidden: { scale: 0.9, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
-    filter: "blur(0px)",
     transition: {
       type: "spring",
-      damping: 14,
-      stiffness: 90,
-      duration: 1.2,
+      damping: 20,
+      stiffness: 100,
+      duration: 0.8,
+      delay: 0.2
     },
-  },
-  hover: {
-    scale: 1.05,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
 const textVariants: Variants = {
-  hidden: { y: 60, opacity: 0, filter: "blur(8px)" },
+  hidden: { y: 40, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    filter: "blur(0px)",
     transition: {
       type: "spring",
-      damping: 16,
+      damping: 20,
       stiffness: 100,
-      duration: 1.1,
+      duration: 0.7,
     },
   },
 };
 
-const listVariants: Variants = {
-  hidden: { opacity: 0 },
+const skillVariants: Variants = {
+  hidden: { scaleX: 0 },
   visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const listItemVariants: Variants = {
-  hidden: { x: -40, opacity: 0, filter: "blur(6px)" },
-  visible: {
-    x: 0,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: { type: "spring", damping: 18, stiffness: 120 },
-  },
+    scaleX: 1,
+    transition: { duration: 1, ease: "easeOut" }
+  }
 };
 
 export default function AboutSection() {
@@ -87,30 +74,16 @@ export default function AboutSection() {
     setMounted(true);
   }, []);
 
-
   return (
     <section
       id="about"
-      className="relative py-8 md:py-16 overflow-hidden"
-      style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}
+      className="relative py-16 md:py-24 overflow-hidden"
     >
-      {/* Subtle background diffusion */}
-      <div className="absolute inset-0 z-0 opacity-[0.06] dark:opacity-[0.1] pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(80,200,255,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_40%,rgba(100,180,255,0.15),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(255,120,150,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_60%,rgba(255,150,180,0.12),transparent_55%)]" />
+      {/* Minimal background elements */}
+      <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-48 h-48 rounded-full bg-white/5 blur-2xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-white/5 blur-2xl" />
       </div>
-
-      {/* Floating glass orb for depth */}
-      <div className="absolute top-[20%] right-[10%] w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-white/8 to-transparent backdrop-blur-3xl dark:from-white/4 dark:to-transparent -z-10 animate-slow-float opacity-50" />
-                  <motion.h2
-              className={`
-                text-[clamp(3.5rem,8vw,7rem)] mb-16 md:mb-24
-                font-black tracking-[-0.04em] text-center
-              `}
-              variants={titleVariants}
-            >
-              About
-            </motion.h2>
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
         <motion.div
@@ -121,93 +94,136 @@ export default function AboutSection() {
           viewport={{ once: true, amount: 0.2 }}
         >
           
-          {/* Text Section – Paragraphs with staggered entrance */}
-          <div className="order-1 lg:order-2">
-            <motion.p
-              className="text-lg md:text-xl lg:text-2xl font-medium mb-6 leading-relaxed"
-              variants={textVariants}
-            >
-              Josh is a visionary graphic designer based in [Your Location], with over {EXPERIENCE_YEARS} years of experience crafting bold, experimental digital experiences. Drawing inspiration from cinematic storytelling and anti-gravity aesthetics, Josh specializes in creating premium designs that blend motion, branding, and immersive 3D elements.
-            </motion.p>
-
-            <motion.p
-              className="text-lg md:text-xl lg:text-2xl font-medium mb-10 leading-relaxed"
-              variants={textVariants}
-            >
-              Having collaborated with industry giants like {CLIENT_LIST.slice(0, 3).join(", ")}, and more, Josh excels in UI/UX, Motion Design, Branding, and 3D Visualization. His approach starts with understanding user stories and cultural contexts, turning everyday interactions into monumental, confident visuals.
-            </motion.p>
-
-            {/* Experience & Skills */}
-            <motion.div variants={textVariants}>
-              <h3 className={`text-2xl md:text-3xl font-bold mb-4`}>
-                Expertise
-              </h3>
-              <motion.ul
-                className="list-none space-y-3 text-lg md:text-xl"
-                variants={listVariants}
-              >
-                {SKILL_CATEGORIES.map((cat, index) => (
-                  <motion.li key={cat} variants={listItemVariants}>
-                    <span className="font-semibold">{cat}</span>: Mastering tools and techniques for cutting-edge results.
-                  </motion.li>
-                ))}
-              </motion.ul>
+          {/* Text Section */}
+          <div>
+            <motion.div variants={titleVariants}>
+              <h2 className="text-5xl md:text-7xl text-center font-black mb-6 tracking-tight">
+                About Me
+              </h2>
             </motion.div>
 
-            {/* Clients */}
-            <motion.div className="mt-10" variants={textVariants}>
-              <h3 className={`text-2xl md:text-3xl font-bold mb-4`}>
-                Selected Clients
-              </h3>
-              <motion.ul
-                className="flex flex-wrap gap-4"
-                variants={listVariants}
-              >
-                {CLIENT_LIST.map((client) => (
-                  <motion.li
-                    key={client}
-                    className={`
-                      px-5 py-2.5 rounded-full text-base md:text-lg font-medium
-                    `}
-                    variants={listItemVariants}
-                  >
-                    {client}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          </div>
+            <motion.div
+              className="space-y-6"
+              variants={textVariants}
+            >
+              <p className="text-xl md:text-2xl leading-relaxed font-medium">
+                I'm <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-white">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
+              </p>
 
-          {/* Photo Section – Cinematic with blur-to-clear */}
+              <p className="text-xl md:text-2xl leading-relaxed opacity-90">
+                I specialize in creating designs that not only look good but also help brands communicate their message clearly and effectively. With experience in <span className="font-medium">branding, logo design, social media graphics, and print design</span>, I've worked on projects that require creativity, strategy, and consistency.
+              </p>
+
+              <p className="text-xl md:text-2xl leading-relaxed opacity-90">
+                I enjoy turning ideas into visually engaging designs that connect with audiences and support business goals. I'm always learning new design trends and techniques to improve my craft.
+              </p>
+            </motion.div>
+
+                      {/* Photo Section */}
           <motion.div
-            className="relative order-2"
+            className="relative"
             variants={photoVariants}
-            whileHover="hover"
           >
-            <div className="relative w-full h-[480px] md:h-[640px] rounded-3xl overflow-hidden shadow-2xl shadow-black/30 dark:shadow-black/50 backdrop-blur-sm">
+            <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden my-8">
               {/* Main Profile Photo */}
               <Image
                 src="/photo.jpeg" // Update with your photo path
-                alt="Josh Designs"
+                alt="Joshua Abugri - Graphic Designer"
                 fill
                 className="object-cover"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* Subtle overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 dark:to-black/30" />
-            </div>
-            {/* Small floating photo or element for experimental feel */}
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-[6px] border-white/80 dark:border-black/60 shadow-xl backdrop-blur-md animate-slow-float">
-              <Image
-                src="/photo.jpeg" // Optional secondary photo
-                alt="Josh in action"
-                fill
-                className="object-cover"
-              />
+              {/* Overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
           </motion.div>
 
+            {/* Skills Section */}
+            <motion.div 
+              className="mt-12"
+              variants={textVariants}
+            >
+              <h3 className="text-3xl font-bold mb-8">Software & Skills</h3>
+              
+              <div className="space-y-6">
+                {SKILLS.map((skill) => (
+                  <div key={skill.name} className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="font-medium">{skill.name}</span>
+                      <span className="">{skill.level}%</span>
+                    </div>
+                    <div className="h-2 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full bg-green-400 rounded-full"
+                        variants={skillVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        style={{ 
+                          width: `${skill.level}%`,
+                          transformOrigin: "left"
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Clients Section */}
+            <motion.div 
+              className="mt-12"
+              variants={textVariants}
+            >
+              <h3 className="text-3xl font-bold mb-6">Selected Clients</h3>
+              <div className="flex flex-wrap gap-3">
+                {CLIENT_LIST.map((client) => (
+                  <span
+                    key={client}
+                    className="px-4 py-2 rounded-lg border border-white/20 text-sm"
+                  >
+                    {client}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Experience Summary */}
+        <motion.div
+          className="mt-20 pt-12 border-t border-white/10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              className="text-center"
+              variants={textVariants}
+            >
+              <div className="text-4xl font-bold mb-2">3+</div>
+              <div className="text-white/70">Years Experience</div>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center"
+              variants={textVariants}
+            >
+              <div className="text-4xl font-bold mb-2">50+</div>
+              <div className="text-white/70">Projects Completed</div>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center"
+              variants={textVariants}
+            >
+              <div className="text-4xl font-bold mb-2">100%</div>
+              <div className="text-white/70">Client Satisfaction</div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
