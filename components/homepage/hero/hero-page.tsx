@@ -148,11 +148,11 @@ export default function HeroPage() {
         {/* Name stack */}
         <div className="relative mb-10 md:mb-16">
           {/* Add subtle designer annotation */}
-          <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 dark:opacity-30">
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 dark:opacity-90">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-px bg-gray-400" />
-              <span className="text-xs font-mono tracking-widest text-gray-500">DESIGNER</span>
-              <div className="w-8 h-px bg-gray-400" />
+              <div className="w-8 h-px bg-green-400" />
+              <span className="text-xs font-mono tracking-widest opacity-60">I AM</span>
+              <div className="w-8 h-px bg-green-400" />
             </div>
           </div>
 
@@ -174,7 +174,7 @@ export default function HeroPage() {
                 ))}
               </div>
               
-              {"Josh".split("").map((char, i) => (
+              {"Joshua".split("").map((char, i) => (
                 <motion.span
                   key={i}
                   custom={i}
@@ -236,7 +236,7 @@ export default function HeroPage() {
               initial="hidden"
               animate="visible"
             >
-              {"DESIGNS".split("").map((char, i) => (
+              {"ABUGRI".split("").map((char, i) => (
                 <motion.span
                   key={i}
                   custom={i + 6}

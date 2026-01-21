@@ -21,7 +21,7 @@ export default function CategoryFilter({
           px-5 py-2.5 rounded-full text-sm md:text-base font-medium
           transition-all duration-300 border
           ${activeCategory === null 
-            ? 'bg-white text-black border-white' 
+            ? '' 
             : 'border-white/20 hover:border-white/40'
           }
         `}
@@ -40,7 +40,7 @@ export default function CategoryFilter({
             transition-all duration-300 border
             ${activeCategory === cat 
               ? 'bg-white text-black border-white' 
-              : 'border-white/20 hover:border-white/40'
+              : 'border-green-400 hover:border-white/40 cursor-pointer'
             }
           `}
         >

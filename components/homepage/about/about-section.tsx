@@ -97,7 +97,8 @@ export default function AboutSection() {
           {/* Text Section */}
           <div>
             <motion.div variants={titleVariants}>
-              <h2 className="text-5xl md:text-7xl text-center font-black mb-6 tracking-tight">
+              <h2 className="text-[clamp(3.5rem,10vw,9rem)] 
+              font-black tracking-[-0.03em] mb-12 md:mb-16 text-center">
                 About Me
               </h2>
             </motion.div>
@@ -107,7 +108,7 @@ export default function AboutSection() {
               variants={textVariants}
             >
               <p className="text-xl md:text-2xl leading-relaxed font-medium">
-                I'm <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-white">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
+                I'm <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-green-400">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
               </p>
 
               <p className="text-xl md:text-2xl leading-relaxed opacity-90">

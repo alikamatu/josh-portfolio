@@ -93,11 +93,12 @@ export default function WorkSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <p className="text-sm md:text-base uppercase tracking-widest opacity-80 mb-4">
+          {/* <p className="text-sm md:text-base uppercase tracking-widest opacity-80 mb-4">
             Portfolio
-          </p>
+          </p> */}
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
+            className="text-[clamp(3.5rem,10vw,9rem)] 
+              font-black tracking-[-0.03em] mb-12 md:mb-16"
             variants={titleVariants}
             initial="hidden"
             whileInView="visible"
@@ -105,9 +106,6 @@ export default function WorkSection() {
           >
             Selected Work
           </motion.h2>
-          <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-            Graphic design work that redefines norms and creates lasting impact
-          </p>
         </motion.div>
 
         {/* Category Filters */}

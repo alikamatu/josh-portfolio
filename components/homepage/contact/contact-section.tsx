@@ -56,7 +56,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 md:py-36 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}
     >
       {/* Subtle background diffusion */}

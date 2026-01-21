@@ -121,9 +121,9 @@ export default function QuoteSection() {
           <motion.blockquote
             className={`
               text-sm
-              font-light leading-[1.2] tracking-[-0.02em]
+              font-light leading-[1.2]
               text-center max-w-4xl mx-auto
-              relative
+              relative  tracking-widest uppercase
             `}
             variants={quoteVariants}
             initial="hidden"
