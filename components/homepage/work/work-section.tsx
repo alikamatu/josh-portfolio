@@ -43,14 +43,9 @@ const fadeInVariants: Variants = {
 };
 
 export default function WorkSection() {
-  const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 4;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const filteredProjects = activeCategory
     ? projectData.filter((p) => p.category === activeCategory)
@@ -97,8 +92,9 @@ export default function WorkSection() {
             Portfolio
           </p> */}
           <motion.h2
-            className="text-[clamp(3.5rem,10vw,9rem)] 
-              font-black tracking-[-0.03em] mb-12 md:mb-16"
+            className="
+            text-[clamp(2.5rem,7vw,6rem)] 
+            font-black tracking-[-0.03em] mb-12 md:mb-16"
             variants={titleVariants}
             initial="hidden"
             whileInView="visible"

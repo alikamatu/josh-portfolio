@@ -1,7 +1,7 @@
 "use client";
 
 import { letterVariants, photoVariants, taglineVariants } from "@/utils/animations";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -86,7 +86,6 @@ function DesignerSquares() {
 
 export default function HeroPage() {
   const [mounted, setMounted] = useState(false);
-  const [showDesignerMessage, setShowDesignerMessage] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -95,8 +94,6 @@ export default function HeroPage() {
   return (
     <section 
       className="relative min-h-full md:min-h-screen flex items-center justify-center overflow-hidden px-5 sm:px-8 md:px-12 pt-34 md:pt-0"
-      onMouseEnter={() => setShowDesignerMessage(true)}
-      onMouseLeave={() => setShowDesignerMessage(false)}
     >
       {/* Original animated background */}
       <div className="absolute inset-0 z-0 opacity-[0.07] dark:opacity-[0.12] pointer-events-none">
@@ -160,7 +157,8 @@ export default function HeroPage() {
           <div className="overflow-hidden">
             <motion.h1
               className={`
-                text-[clamp(4.2rem,12vw,13rem)] 
+                text-[clamp(2.2rem,10vw,10rem)] 
+                md:text-[clamp(4.2rem,12vw,13rem)] 
                 leading-[0.88] font-black tracking-[-0.04em]
                 relative
               `}
@@ -178,7 +176,6 @@ export default function HeroPage() {
                 <motion.span
                   key={i}
                   custom={i}
-                  variants={letterVariants}
                   className="inline-block"
                 >
                   {char}
@@ -227,7 +224,8 @@ export default function HeroPage() {
             
             <motion.h1
               className={`
-                text-[clamp(5.5rem,15vw,17rem)] 
+                text-[clamp(3.2rem,11vw,12rem)] 
+                md:text-[clamp(5.5rem,15vw,17rem)] 
                 leading-[0.82] font-black tracking-[-0.055em]
                 hero-text
                 bg-clip-text text-transparent
@@ -240,7 +238,6 @@ export default function HeroPage() {
                 <motion.span
                   key={i}
                   custom={i + 6}
-                  variants={letterVariants}
                   className="inline-block hover:text-green-400 dark:hover:text-green-400 transition-colors duration-300"
                 >
                   {char}

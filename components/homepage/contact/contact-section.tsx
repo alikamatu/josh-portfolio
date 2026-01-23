@@ -1,8 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
-import { SOCIAL_LINKS } from "@/utils/constants";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -46,12 +44,6 @@ const socialVariants: Variants = {
 };
 
 export default function ContactSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
 
   return (
     <section
@@ -78,20 +70,19 @@ export default function ContactSection() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.h2
-            className={`
-              text-[clamp(3.5rem,10vw,9rem)] 
-              font-black tracking-[-0.03em] mb-12 md:mb-16
-            `}
+            className="
+            text-[clamp(2.5rem,7vw,6rem)] 
+            font-black tracking-[-0.03em] mb-12 md:mb-16"
             variants={titleVariants}
           >
             Get in Touch
           </motion.h2>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl mb-16 max-w-3xl mx-auto leading-relaxed"
             variants={formVariants}
           >
-            Let's collaborate on your next project. Drop a message, and I'll get back to you soon.
+            Let&apos;s collaborate on your next project. Drop a message, and I will get back to you soon.
           </motion.p>
 
           {/* Contact Form */}
@@ -108,7 +99,7 @@ export default function ContactSection() {
               required
               className={`
                 w-full px-6 py-4 rounded-xl text-lg
-                bg-white/80 dark:bg-black/50 border border-gray-300 dark:border-gray-700
+                bg-transparent border border-gray-300 dark:border-gray-700
                 placeholder-gray-500 dark:placeholder-gray-400
                 focus:outline-none focus:border-black dark:focus:border-white
                 backdrop-blur-sm transition-all duration-300
@@ -121,7 +112,7 @@ export default function ContactSection() {
               required
               className={`
                 w-full px-6 py-4 rounded-xl text-lg
-                bg-white/80 dark:bg-black/50 border border-gray-300 dark:border-gray-700
+                bg-transparent border border-gray-300 dark:border-gray-700
                 placeholder-gray-500 dark:placeholder-gray-400
                 focus:outline-none focus:border-black dark:focus:border-white
                 backdrop-blur-sm transition-all duration-300
@@ -134,7 +125,7 @@ export default function ContactSection() {
               required
               className={`
                 w-full px-6 py-4 rounded-xl text-lg
-                bg-white/80 dark:bg-black/50 border border-gray-300 dark:border-gray-700
+                bg-transparent border border-gray-300 dark:border-gray-700
                 placeholder-gray-500 dark:placeholder-gray-400
                 focus:outline-none focus:border-black dark:focus:border-white
                 backdrop-blur-sm transition-all duration-300
@@ -144,37 +135,12 @@ export default function ContactSection() {
               type="submit"
               className={`
                 w-full px-8 py-4 text-lg font-semibold rounded-xl
-                transition-all duration-500 shadow-lg hover:shadow-xl hover:-translate-y-1
+                transition-all duration-500 bg-green-400 shadow-lg hover:shadow-xl hover:-translate-y-1
               `}
             >
               Send Message
             </button>
           </motion.form>
-
-          {/* Social Links */}
-          <motion.div
-            className="mt-16 flex justify-center gap-6 md:gap-8"
-            variants={formVariants}
-          >
-            {Object.entries(SOCIAL_LINKS).map(([key, url]) => (
-              <motion.a
-                key={key}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-                  text-3xl md:text-4xl
-                  transition-colors duration-300
-                `}
-                variants={socialVariants}
-                whileHover="hover"
-                aria-label={`Connect on ${key.charAt(0).toUpperCase() + key.slice(1)}`}
-              >
-                {/* Use initials or replace with SVG icons */}
-                {key.charAt(0).toUpperCase()}
-              </motion.a>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

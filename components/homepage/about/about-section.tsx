@@ -68,11 +68,6 @@ const skillVariants: Variants = {
 };
 
 export default function AboutSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <section
@@ -97,8 +92,11 @@ export default function AboutSection() {
           {/* Text Section */}
           <div>
             <motion.div variants={titleVariants}>
-              <h2 className="text-[clamp(3.5rem,10vw,9rem)] 
-              font-black tracking-[-0.03em] mb-12 md:mb-16 text-center">
+              <h2 
+           className="
+            text-[clamp(2.5rem,7vw,6rem)] 
+            font-black tracking-[-0.03em] mb-12 md:mb-16 text-center"
+              >
                 About Me
               </h2>
             </motion.div>
@@ -107,16 +105,16 @@ export default function AboutSection() {
               className="space-y-6"
               variants={textVariants}
             >
-              <p className="text-xl md:text-2xl leading-relaxed font-medium">
-                I'm <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-green-400">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
+              <p className="text-xl  leading-relaxed opacity-90">
+                I&apos;m <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-green-400">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
               </p>
 
-              <p className="text-xl md:text-2xl leading-relaxed opacity-90">
-                I specialize in creating designs that not only look good but also help brands communicate their message clearly and effectively. With experience in <span className="font-medium">branding, logo design, social media graphics, and print design</span>, I've worked on projects that require creativity, strategy, and consistency.
+              <p className="text-xl  leading-relaxed opacity-90">
+                I specialize in creating designs that not only look good but also help brands communicate their message clearly and effectively. With experience in <span className="font-medium">branding, logo design, social media graphics, and print design</span>, I&apos;ve worked on projects that require creativity, strategy, and consistency.
               </p>
 
-              <p className="text-xl md:text-2xl leading-relaxed opacity-90">
-                I enjoy turning ideas into visually engaging designs that connect with audiences and support business goals. I'm always learning new design trends and techniques to improve my craft.
+              <p className="text-xl  leading-relaxed opacity-90">
+                I enjoy turning ideas into visually engaging designs that connect with audiences and support business goals. I&apos;m always learning new design trends and techniques to improve my craft.
               </p>
             </motion.div>
 
@@ -171,24 +169,6 @@ export default function AboutSection() {
                 ))}
               </div>
             </motion.div>
-
-            {/* Clients Section */}
-            <motion.div 
-              className="mt-12"
-              variants={textVariants}
-            >
-              <h3 className="text-3xl font-bold mb-6">Selected Clients</h3>
-              <div className="flex flex-wrap gap-3">
-                {CLIENT_LIST.map((client) => (
-                  <span
-                    key={client}
-                    className="px-4 py-2 rounded-lg border border-white/20 text-sm"
-                  >
-                    {client}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </motion.div>
 
@@ -200,29 +180,29 @@ export default function AboutSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             <motion.div 
               className="text-center"
               variants={textVariants}
             >
-              <div className="text-4xl font-bold mb-2">3+</div>
-              <div className="text-white/70">Years Experience</div>
+              <div className="text-2xl font-bold mb-2">3+</div>
+              <div className="text-xs">Years Experience</div>
             </motion.div>
             
             <motion.div 
               className="text-center"
               variants={textVariants}
             >
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-white/70">Projects Completed</div>
+              <div className="text-2xl font-bold mb-2">50+</div>
+              <div className="text-xs">Projects Completed</div>
             </motion.div>
             
             <motion.div 
               className="text-center"
               variants={textVariants}
             >
-              <div className="text-4xl font-bold mb-2">100%</div>
-              <div className="text-white/70">Client Satisfaction</div>
+              <div className="text-2xl font-bold mb-2">100%</div>
+              <div className="text-xs">Client Satisfaction</div>
             </motion.div>
           </div>
         </motion.div>

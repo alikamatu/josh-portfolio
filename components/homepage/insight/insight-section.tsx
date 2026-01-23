@@ -29,11 +29,6 @@ const lineVariants: Variants = {
 };
 
 export default function InsightSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
 
   return (
@@ -54,8 +49,8 @@ export default function InsightSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 md:px-12 text-center">
         <motion.blockquote
           className={`
-            text-[clamp(2rem,6vw,0.5rem)] 
-            font-bold leading-[1.15] tracking-[-0.02em]
+            text-[clamp(1rem,6vw,0.5rem)] 
+            font-light leading-[1.15] tracking-[-0.02em]
           `}
           variants={insightVariants}
           initial="hidden"
@@ -72,7 +67,7 @@ export default function InsightSection() {
             their late-night rants about why they hate filling forms.
           </motion.span>
           <motion.span variants={lineVariants} className="block">
-            Haha, it's all about the stories people tell
+            Haha, it&apos;s all about the stories people tell
           </motion.span>
           <motion.span variants={lineVariants} className="block">
             <strong>without ever saying a word.</strong>
