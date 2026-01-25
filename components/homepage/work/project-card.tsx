@@ -137,34 +137,43 @@ export default function ProjectCard({
         </motion.div>
       </motion.div>
 
-      {/* FULLSCREEN LIGHTBOX */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-          >
-            <motion.div
-              layoutId={`project-image-${project.id}`}
-              className="relative w-full max-w-6xl h-[85vh] rounded-xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            >
-              <Image
-                src={project.image || "/placeholder.jpg"}
-                alt={project.title}
-                fill
-                className="object-contain"
-                sizes="100vw"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xl flex items-center justify-center p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setIsOpen(false)} // click outside closes
+    >
+      {/* CLOSE BUTTON */}
+      <button
+        onClick={() => setIsOpen(false)}
+        className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl transition"
+        aria-label="Close image"
+      >
+        ✕
+      </button>
+
+      {/* IMAGE CONTAINER */}
+      <motion.div
+        layoutId={`project-image-${project.id}`}
+        className="relative w-full max-w-6xl h-[85vh] rounded-xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()} // prevents close when clicking image
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+      >
+        <Image
+          src={project.image || "/placeholder.jpg"}
+          alt={project.title}
+          fill
+          className="object-contain"
+          sizes="100vw"
+          priority
+        />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </>
   );
 }

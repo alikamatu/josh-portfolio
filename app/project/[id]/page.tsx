@@ -196,34 +196,47 @@ export default function ProjectDetailPage() {
         </div>
       </div>
 
-      {/* FULLSCREEN LIGHTBOX */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-          >
-            <motion.div
-              layoutId={`project-image-${project.id}`}
-              className="relative w-full max-w-6xl h-[85vh] rounded-xl overflow-hidden"
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-contain"
-                sizes="100vw"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+{/* FULLSCREEN LIGHTBOX */}
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xl flex items-center justify-center p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setIsOpen(false)} // outside click closes
+    >
+      {/* CLOSE BUTTON */}
+      <motion.button
+        onClick={() => setIsOpen(false)}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl transition"
+        aria-label="Close image"
+      >
+        ✕
+      </motion.button>
+
+      {/* IMAGE CONTAINER */}
+      <motion.div
+        layoutId={`project-image-${project.id}`}
+        className="relative w-full max-w-6xl h-[85vh] rounded-xl overflow-hidden"
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        onClick={(e) => e.stopPropagation()} // prevents closing when image area is clicked
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-contain"
+          sizes="100vw"
+          priority
+        />
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }
