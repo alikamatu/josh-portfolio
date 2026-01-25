@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { projectData } from "@/utils/projectData";
 import { useEffect, useState } from "react";
+import { Project } from "@/utils/types";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -20,10 +21,7 @@ const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
   }
 };
 
@@ -32,19 +30,29 @@ export default function ProjectDetailPage() {
   const router = useRouter();
   const projectId = parseInt(params.id as string);
   const project = projectData.find(p => p.id === projectId);
-  const [mounted, setMounted] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Scroll lock + ESC close
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [isOpen]);
 
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link 
-            href="/#portfolio" 
+          <Link
+            href="/#portfolio"
             className="inline-block px-6 py-3 border border-white/20 rounded-lg hover:bg-white hover:text-black transition-colors"
           >
             View All Projects
@@ -54,23 +62,24 @@ export default function ProjectDetailPage() {
     );
   }
 
-  // Get related projects
   const relatedProjects = projectData
     .filter(p => p.id !== project.id && p.category === project.category)
     .slice(0, 2);
 
+  const details = getProjectDetails(project.id);
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen">
       {/* Back Button */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="sticky top-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10"
+        className="sticky top-0 z-50 backdrop-blur-sm border-b"
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <button
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-2 group"
           >
             <span className="group-hover:-translate-x-1 transition-transform">←</span>
             Back to Portfolio
@@ -79,7 +88,7 @@ export default function ProjectDetailPage() {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Project Header */}
+        {/* Header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -92,22 +101,24 @@ export default function ProjectDetailPage() {
             </span>
             <span className="text-sm opacity-70">{project.industry}</span>
           </motion.div>
-          
+
           <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black mb-6">
             {project.title}
           </motion.h1>
-          
+
           <motion.p variants={fadeInUp} className="text-xl md:text-2xl opacity-90 max-w-3xl">
             {project.description}
           </motion.p>
         </motion.div>
 
-        {/* Main Project Image */}
+        {/* HERO IMAGE (shared layout) */}
         <motion.div
+          layoutId={`project-image-${project.id}`}
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden mb-12 border border-white/10"
+          className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden mb-12 border border-white/10 cursor-zoom-in"
+          onClick={() => setIsOpen(true)}
         >
           <Image
             src={project.image}
@@ -119,148 +130,146 @@ export default function ProjectDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </motion.div>
 
-        {/* Project Details */}
+        {/* CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-12"
-            >
-              {/* Project Overview */}
-              <motion.div variants={fadeInUp}>
-                <h2 className="text-3xl font-bold mb-6 pb-4 border-b border-white/10">
-                  Project Overview
-                </h2>
-                <div className="space-y-6">
-                  <p className="text-lg leading-relaxed opacity-90">
-                    {getProjectDetails(project.id).overview}
-                  </p>
-                  {getProjectDetails(project.id).goals && (
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4">Project Goals</h3>
-                      <ul className="space-y-3">
-                        {getProjectDetails(project.id).goals?.map((goal, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="inline-block w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                            <span className="text-lg opacity-90">{goal}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-
-              {/* Design Approach */}
-              {getProjectDetails(project.id).approach && (
-                <motion.div variants={fadeInUp}>
-                  <h2 className="text-3xl font-bold mb-6 pb-4 border-b border-white/10">
-                    Design Approach
-                  </h2>
-                  <p className="text-lg leading-relaxed opacity-90">
-                    {getProjectDetails(project.id).approach}
-                  </p>
-                </motion.div>
+          <div className="lg:col-span-2 space-y-12">
+            <Section title="Project Overview">
+              <p className="text-lg leading-relaxed opacity-90">{details.overview}</p>
+              {details.goals && (
+                <ul className="space-y-3 mt-6">
+                  {details.goals.map((goal, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="w-2 h-2 rounded-full mt-2 mr-3" />
+                      <span className="text-lg opacity-90">{goal}</span>
+                    </li>
+                  ))}
+                </ul>
               )}
+            </Section>
 
-              {/* Result */}
-              {getProjectDetails(project.id).result && (
-                <motion.div variants={fadeInUp}>
-                  <h2 className="text-3xl font-bold mb-6 pb-4 border-b border-white/10">
-                    Result
-                  </h2>
-                  <p className="text-lg leading-relaxed opacity-90">
-                    {getProjectDetails(project.id).result}
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
+            {details.approach && (
+              <Section title="Design Approach">
+                <p className="text-lg leading-relaxed opacity-90">{details.approach}</p>
+              </Section>
+            )}
+
+            {details.result && (
+              <Section title="Result">
+                <p className="text-lg leading-relaxed opacity-90">{details.result}</p>
+              </Section>
+            )}
           </div>
 
-          {/* Sidebar - Project Info */}
+          {/* Sidebar */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
             className="space-y-8"
           >
-            <div className="p-6 rounded-xl border border-white/10 bg-white/5">
-              <h3 className="text-2xl font-bold mb-6">Project Details</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <div className="text-sm uppercase tracking-wider opacity-70 mb-2">Client</div>
-                  <div className="text-xl font-medium">{project.client}</div>
-                </div>
-                
-                <div>
-                  <div className="text-sm uppercase tracking-wider opacity-70 mb-2">Industry</div>
-                  <div className="text-xl font-medium">{project.industry}</div>
-                </div>
-                
-                <div>
-                  <div className="text-sm uppercase tracking-wider opacity-70 mb-2">Category</div>
-                  <div className="text-xl font-medium">{project.category}</div>
-                </div>
-                
-                <div>
-                  <div className="text-sm uppercase tracking-wider opacity-70 mb-2">Tools Used</div>
-                  <div className="space-y-2">
-                    {project.tools.map((tool, index) => (
-                      <div key={index} className="flex items-center">
-                        <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-                        <span className="text-lg opacity-90">{tool}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <InfoCard project={{ ...project, id: String(project.id), tags: project.tags || [] }} />
 
-            {/* Related Projects */}
             {relatedProjects.length > 0 && (
               <div className="p-6 rounded-xl border border-white/10 bg-white/5">
                 <h3 className="text-2xl font-bold mb-6">Related Work</h3>
-                <div className="space-y-4">
-                  {relatedProjects.map(related => (
-                    <Link
-                      key={related.id}
-                      href={`/project/${related.id}`}
-                      className="block group"
-                    >
-                      <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors">
-                        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                          <div className="w-full h-full bg-white/10 group-hover:scale-110 transition-transform duration-300" />
-                        </div>
-                        <div>
-                          <div className="font-medium group-hover:text-white transition-colors">
-                            {related.title}
-                          </div>
-                          <div className="text-sm opacity-70">{related.category}</div>
-                        </div>
+                {relatedProjects.map(r => (
+                  <Link key={r.id} href={`/project/${r.id}`} className="block group mb-4">
+                    <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-white/10" />
+                      <div>
+                        <div className="font-medium">{r.title}</div>
+                        <div className="text-sm opacity-70">{r.category}</div>
                       </div>
-                    </Link>
-                  ))}
-                </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             )}
 
-            {/* Back to Portfolio */}
             <Link
               href="/#portfolio"
-              className="block w-full px-6 py-4 text-center rounded-lg border border-white/20 hover:bg-white hover:text-black transition-all duration-300 font-medium"
+              className="block w-full px-6 py-4 text-center rounded-lg border border-white/20 hover:bg-white hover:text-black"
             >
               View All Projects
             </Link>
           </motion.div>
         </div>
       </div>
+
+      {/* FULLSCREEN LIGHTBOX */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              layoutId={`project-image-${project.id}`}
+              className="relative w-full max-w-6xl h-[85vh] rounded-xl overflow-hidden"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
+/* Reusable Components */
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <h2 className="text-3xl font-bold mb-6 pb-4 border-b border-white/10">{title}</h2>
+      {children}
+    </motion.div>
+  );
+}
+
+function InfoCard({ project }: { project: Project }) {
+  return (
+    <div className="p-6 rounded-xl border border-white/10">
+      <h3 className="text-2xl font-bold mb-6">Project Details</h3>
+      <div className="space-y-6">
+        <InfoRow label="Client" value={project.client} />
+        <InfoRow label="Industry" value={project.industry} />
+        <InfoRow label="Category" value={project.category} />
+        <div>
+          <div className="text-sm uppercase opacity-70 mb-2">Tools Used</div>
+          {project.tools.map((tool: string, i: number) => (
+            <div key={i} className="flex items-center">
+              <span className="w-2 h-2 rounded-full mr-3" />
+              <span className="text-lg opacity-90">{tool}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InfoRow({ label, value }: { label: string; value?: string }) {
+  return (
+    <div>
+      <div className="text-sm uppercase opacity-70 mb-2">{label}</div>
+      <div className="text-xl font-medium">{value}</div>
+    </div>
+  );
+}
+
 
 // Helper function to get detailed project info based on ID
 function getProjectDetails(id: number) {

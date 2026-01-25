@@ -2,8 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { CLIENT_LIST, SKILLS } from "@/utils/constants";
+import { SKILLS } from "@/utils/constants";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -71,7 +70,7 @@ export default function AboutSection() {
 
   return (
     <section
-      id="about"
+      id="aboutme"
       className="relative py-16 md:py-24 overflow-hidden"
     >
       {/* Minimal background elements */}

@@ -1,28 +1,19 @@
 "use client";
 
 import { Download, Menu, X, Sun, Moon, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/providers/theme-provider";
 import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Work", href: "/", delay: 0.1 },
-  { label: "About Me", href: "/about", delay: 0.3 },
+  { label: "About Me", href: "#aboutme", delay: 0.3 },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <motion.nav

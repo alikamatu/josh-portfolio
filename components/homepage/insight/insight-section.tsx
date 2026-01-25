@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const insightVariants: Variants = {
   hidden: { opacity: 0, y: 80, filter: "blur(10px)" },
@@ -48,7 +47,7 @@ export default function InsightSection() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 md:px-12 text-center">
         <motion.blockquote
-          className={`
+          className={`u
             text-[clamp(1rem,6vw,0.5rem)] 
             font-light leading-[1.15] tracking-[-0.02em]
           `}

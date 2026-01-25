@@ -43,9 +43,6 @@ export default function Footer() {
       >
         {/* Brand */}
         <div className="space-y-2">
-          <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Josh Designs
-          </h3>
           <p className="text-sm text-muted-foreground max-w-md">
             Crafting modern digital experiences with clarity, motion, and
             intention.
@@ -80,7 +77,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Josh Designs — All rights reserved.
+          © {new Date().getFullYear()} Joshua Abugri — All rights reserved.
         </p>
       </motion.div>
     </footer>

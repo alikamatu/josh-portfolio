@@ -1,10 +1,10 @@
 "use client";
 
-import { letterVariants, photoVariants, taglineVariants } from "@/utils/animations";
+import { photoVariants, taglineVariants } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // Designer squares component
 function DesignerSquares() {
@@ -85,11 +85,7 @@ function DesignerSquares() {
 }
 
 export default function HeroPage() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [mounted] = useState(true);
 
   return (
     <section 

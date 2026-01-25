@@ -52,5 +52,6 @@ export interface Project {
   client: string;
   industry: string;
   tools: string[];
+  tags?: string[];
   link: string;
 }

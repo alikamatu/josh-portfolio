@@ -6,6 +6,9 @@ export type Project = {
   image: string;
   tags: string[];
   link: string;
+  client?: string;
+  industry?: string;
+  tools: string[];
 };
 
 export type Experience = {

@@ -10,7 +10,8 @@ export const projectData: Project[] = [
     client: "Kailyn Hairmelo Hub",
     industry: "Beauty & Haircare",
     tools: ["Adobe Illustrator", "Brand Strategy", "Color Theory"],
-    link: "/project/1"
+    link: "/project/1",
+    tags: ["Branding", "Logo Design", "Beauty"]
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ export const projectData: Project[] = [
     client: "Millennium Prayer House Chapel",
     industry: "Religious Organization",
     tools: ["Adobe Photoshop", "Adobe Illustrator", "Print Design"],
-    link: "/project/2"
+    link: "/project/2",
+    tags: ["Print Design", "Stickers", "Religious"]
   },
   {
     id: 3,
@@ -32,7 +34,8 @@ export const projectData: Project[] = [
     client: "MaaB's Braids & Dreadlocks",
     industry: "Beauty Services",
     tools: ["Adobe Photoshop", "Social Media Design", "Typography"],
-    link: "/project/3"
+    link: "/project/3",
+    tags: ["Social Media", "Graphics", "Beauty"]
   },
   {
     id: 4,
@@ -43,72 +46,7 @@ export const projectData: Project[] = [
     client: "TechCorp Solutions",
     industry: "Technology",
     tools: ["Adobe Illustrator", "InDesign", "Brand Guidelines"],
-    link: "/project/4"
-  },
-  // {
-  //   id: 5,
-  //   title: "Restaurant Menu Design",
-  //   category: "Print Design",
-  //   image: "/projects/restaurant-menu.jpg", // Replace with actual image
-  //   description: "Modern menu design with elegant typography and layout for an upscale dining experience.",
-  //   client: "Le Petit Bistro",
-  //   industry: "Hospitality",
-  //   tools: ["Adobe InDesign", "Typography", "Layout Design"],
-  //   link: "/project/5"
-  // },
-  // {
-  //   id: 6,
-  //   title: "E-commerce Social Media Kit",
-  //   category: "Social Media",
-  //   image: "/projects/ecommerce-social.jpg", // Replace with actual image
-  //   description: "Complete social media template kit for e-commerce brand with consistent visual identity.",
-  //   client: "UrbanWear Fashion",
-  //   industry: "Fashion Retail",
-  //   tools: ["Adobe Photoshop", "Social Templates", "Visual Consistency"],
-  //   link: "/project/6"
-  // },
-  // {
-  //   id: 7,
-  //   title: "Startup Logo & Identity",
-  //   category: "Logo Design",
-  //   image: "/projects/startup-logo.jpg", // Replace with actual image
-  //   description: "Minimalist logo design for tech startup with scalable identity system.",
-  //   client: "NovaTech Solutions",
-  //   industry: "Technology Startup",
-  //   tools: ["Adobe Illustrator", "Logo Design", "Scalable Graphics"],
-  //   link: "/project/7"
-  // },
-  // {
-  //   id: 8,
-  //   title: "Event Promotional Materials",
-  //   category: "Print Design",
-  //   image: "/projects/event-promo.jpg", // Replace with actual image
-  //   description: "Complete set of promotional materials for corporate event including posters, flyers, and digital banners.",
-  //   client: "Global Business Summit",
-  //   industry: "Corporate Events",
-  //   tools: ["Adobe Photoshop", "InDesign", "Print Production"],
-  //   link: "/project/8"
-  // },
-  // {
-  //   id: 9,
-  //   title: "Mobile App Interface Design",
-  //   category: "Digital Graphics",
-  //   image: "/projects/mobile-app.jpg", // Replace with actual image
-  //   description: "User interface design for productivity mobile application with intuitive user experience.",
-  //   client: "ProductivityPro App",
-  //   industry: "Mobile Technology",
-  //   tools: ["Adobe XD", "UI Design", "User Experience"],
-  //   link: "/project/9"
-  // },
-  // {
-  //   id: 10,
-  //   title: "Book Cover Design Series",
-  //   category: "Print Design",
-  //   image: "/projects/book-covers.jpg", // Replace with actual image
-  //   description: "Series of book cover designs for fiction novels with cohesive visual theme.",
-  //   client: "Literary Press",
-  //   industry: "Publishing",
-  //   tools: ["Adobe Photoshop", "Illustrator", "Typography"],
-  //   link: "/project/10"
-  // }
+    link: "/project/4",
+    tags: ["Branding", "Corporate", "Design"]
+  }
 ];
