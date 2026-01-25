@@ -246,7 +246,7 @@ export default function HeroPage() {
         {/* Tagline / role */}
         <motion.p
           className={`
-            text-xl sm:text-2xl 
+            text-sm
             font-medium max-w-4xl mx-auto leading-tight
             mb-12 md:mb-16
             relative
@@ -258,7 +258,6 @@ export default function HeroPage() {
           {/* Decorative brackets */}
           <span className="absolute -left-6 top-0 text-gray-300 dark:text-gray-700 font-serif text-3xl hidden md:block">[</span>
           <span className="absolute -right-6 top-0 text-gray-300 dark:text-gray-700 font-serif text-3xl hidden md:block">]</span>
-          
           Branding & Visual Identity • Logo Design • Social Media & Digital Graphics • Print Design (flyers, posters, business cards) • Adobe Creative Suite (Photoshop, Illustrator, InDesign) • Creative Concept Development
         </motion.p>
 
