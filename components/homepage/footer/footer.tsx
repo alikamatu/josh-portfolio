@@ -3,12 +3,12 @@
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import {
-  Github,
   Linkedin,
   Twitter,
   Instagram,
   Dribbble,
   Mail,
+  Facebook,
 } from "lucide-react";
 import { SOCIAL_LINKS } from "@/utils/constants";
 
@@ -23,13 +23,14 @@ const fadeUp: Variants = {
 
 // Map social keys → icons
 const ICONS: Record<string, React.ReactNode> = {
-  github: <Github size={20} />,
+  facebook: <Facebook size={20} />,
   linkedin: <Linkedin size={20} />,
-  twitter: <Twitter size={20} />,
+  twitter: <Twitter size={20} />, // X
   instagram: <Instagram size={20} />,
-  dribbble: <Dribbble size={20} />,
+  behance: <Dribbble size={20} />,
   email: <Mail size={20} />,
 };
+
 
 export default function Footer() {
   return (

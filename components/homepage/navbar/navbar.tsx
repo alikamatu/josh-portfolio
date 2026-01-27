@@ -7,7 +7,7 @@ import { useTheme } from "@/providers/theme-provider";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { label: "Work", href: "/", delay: 0.1 },
+  { label: "Work", href: "#portfolio", delay: 0.1 },
   { label: "About Me", href: "#aboutme", delay: 0.3 },
 ];
 
@@ -20,7 +20,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
+      className={`fixed md:relative top-0 left-0 right-0 z-50 transition-all duration-300 border-color md:no-bg`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -32,13 +32,13 @@ export default function Navbar() {
           >
             <div className="w-2 h-2 rounded-full bg-green-400" />
             <Link href="/" className="font-bold tracking-tight text-2xl">
-              Josh<span>.</span>designs
+              Joshua<span>.</span>Abugri
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {NAV_ITEMS.map((item, index) => (
+            {NAV_ITEMS.map((item,) => (
               <motion.div
                 key={item.label}
                 initial={{ opacity: 0, y: -20 }}

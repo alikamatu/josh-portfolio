@@ -1,9 +1,13 @@
 export const SOCIAL_LINKS = {
-  dribbble: "https://dribbble.com",
-  linkedin: "https://linkedin.com",
-  behance: "https://behance.net",
-  twitter: "https://twitter.com",
+  facebook: "https://www.facebook.com/share/18CqfBdjew/?mibextid=wwXIfr",
+  linkedin:
+    "https://www.linkedin.com/in/joshua-abugri-a56982220?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+  twitter: "https://x.com/joshua1_bra?s=21",
+  instagram:
+    "https://www.instagram.com/joshconceptsstudio?igsh=MWVsdzdsbDgxaDc2&utm_source=qr",
+  behance: "https://www.behance.net/abugrijoshua",
 } as const;
+
 
 
 export const SKILL_CATEGORIES = ["All", "Development", "Tools"] as const;
@@ -11,7 +15,7 @@ export const SKILL_CATEGORIES = ["All", "Development", "Tools"] as const;
 export const EXPERIENCE_YEARS = 3;
 
 export const SKILLS = [
-  { name: "Adobe Photoshop", level: 85 },
+  { name: "Adobe Photoshop", level: 95 },
   { name: "Adobe Illustrator", level: 90 },
   { name: "Adobe InDesign", level: 80 },
   { name: "Adobe Premiere Pro", level: 75 },

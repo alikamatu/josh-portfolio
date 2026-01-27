@@ -18,7 +18,6 @@ export default function HomePage() {
       <WorkSection />
       <InsightSection />
       <AboutSection />
-      <ContactSection />
       <Footer />
     </main>
   );

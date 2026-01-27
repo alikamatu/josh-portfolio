@@ -117,25 +117,49 @@ export default function AboutSection() {
               </p>
             </motion.div>
 
-                      {/* Photo Section */}
-          <motion.div
-            className="relative"
-            variants={photoVariants}
-          >
-            <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden my-8">
-              {/* Main Profile Photo */}
-              <Image
-                src="/photo.jpeg" // Update with your photo path
-                alt="Joshua Abugri - Graphic Designer"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              {/* Overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </div>
-          </motion.div>
+{/* Photo Section */}
+<motion.div
+  variants={photoVariants}
+  className="my-12"
+>
+  <div className="
+    grid 
+    grid-cols-1 
+    sm:grid-cols-2 
+    lg:grid-cols-3 
+    gap-6
+  ">
+    {[
+      "/profile/1d512beb-ac06-4339-9fe1-253b528d1ce8.jpeg",
+      "/profile/6c2a3c14-0ba5-44ba-8ae4-be0d9783cf55.jpeg",
+      "/profile/54358df2-c21a-4103-b319-1d32be90999f.jpeg",
+    ].map((src, index) => (
+      <motion.div
+        key={index}
+        variants={photoVariants}
+        className="
+          relative 
+          h-[320px] 
+          sm:h-[360px] 
+          lg:h-[420px] 
+          rounded-2xl 
+          overflow-hidden
+        "
+      >
+        <Image
+          src={src}
+          alt={`Joshua Abugri - Design work ${index + 1}`}
+          fill
+          className="object-cover transition-transform duration-700 hover:object-fit"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+
+        {/* Soft overlay for consistency */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
 
             {/* Skills Section */}
             <motion.div 

@@ -41,6 +41,10 @@ body {
   background-color: var(--bg-color);
   }
 
+.no-bg {
+  background-color: red !important;
+}
+
 .hero-text {
   color: var(--hero-color);
 }

@@ -149,7 +149,7 @@ export default function ProjectCard({
       {/* CLOSE BUTTON */}
       <button
         onClick={() => setIsOpen(false)}
-        className="absolute top-6 right-6 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl transition"
+        className="absolute top-16 md:top-6 right-6 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-xl transition"
         aria-label="Close image"
       >
         ✕
