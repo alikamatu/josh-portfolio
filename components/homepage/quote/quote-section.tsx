@@ -1,40 +1,6 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
-import { FaBrush, FaEye, FaLightbulb, FaPalette, FaPencilAlt } from "react-icons/fa";
-
-// Skill badges data
-const skills = [
-  { name: "Adobe Photoshop", level: 75, icon: <FaEye className="inline mr-2" />, color: "from-blue-500 to-gray-500" },
-  { name: "Adobe Illustrator", level: 85, icon: <FaEye className="inline mr-2" />, color: "from-orange-500 to-yellow-500" },
-  { name: "Adobe InDesign", level: 70, icon: <FaEye className="inline mr-2" />, color: "from-pink-500 to-rose-500" },
-  { name: "Premier Pro", level: 65, icon: <FaEye className="inline mr-2" />, color: "from-green-500 to-teal-500" },
-  { name: "After Effects", level: 60, icon: <FaEye className="inline mr-2" />, color: "from-gray-500 to-indigo-500" },
-  { name: "Visual Identity", level: 90, icon: <FaEye className="inline mr-2" />, color: "from-indigo-500 to-blue-500" },
-];
-
-// Project highlights
-const projectHighlights = [
-  {
-    client: "Kailyn Hairmelo Hub",
-    type: "Logo & Brand Identity",
-    color: "bg-gradient-to-br from-pink-100 to-gray-100 dark:from-pink-900/30 dark:to-gray-900/30",
-    borderColor: "border-pink-200 dark:border-pink-800"
-  },
-  {
-    client: "Millennium Prayer House Chapel",
-    type: "Print Design",
-    color: "bg-gradient-to-br from-blue-100 to-gray-100 dark:from-blue-900/30 dark:to-gray-900/30",
-    borderColor: "border-blue-200 dark:border-blue-800"
-  },
-  {
-    client: "MaaB's Braids & Dreadlocks",
-    type: "Social Media Graphics",
-    color: "bg-gradient-to-br from-green-100 to-gray-100 dark:from-green-900/30 dark:to-gray-900/30",
-    borderColor: "border-green-200 dark:border-green-800"
-  },
-];
 
 const quoteVariants: Variants = {
   hidden: { opacity: 0, y: 80, filter: "blur(10px)" },
@@ -61,26 +27,7 @@ const lineVariants: Variants = {
   },
 };
 
-const skillVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  })
-};
-
 export default function QuoteSection() {
-  const [mounted, setMounted] = useState(false);
-  const [activeSkill, setActiveSkill] = useState<number | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <section
@@ -131,8 +78,8 @@ export default function QuoteSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Decorative quote marks */}
-            <div className="absolute -top-6 -left-4 text-6xl text-gray-300 dark:text-gray-700 font-serif">"</div>
-            <div className="absolute -bottom-6 -right-4 text-6xl text-gray-300 dark:text-gray-700 font-serif">"</div>
+            <div className="absolute -top-6 -left-4 text-6xl text-gray-300 dark:text-gray-700 font-serif">&apos;</div>
+            <div className="absolute -bottom-6 -right-4 text-6xl text-gray-300 dark:text-gray-700 font-serif">&apos;</div>
 
             <motion.span variants={lineVariants} className="block mb-4">
               I am a graphic designer whose work{" "}
@@ -173,7 +120,7 @@ export default function QuoteSection() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-20 dark:opacity-30">
         <div className="flex items-center gap-4">
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
-          <span className="text-sm font-mono tracking-widest">JOSHUA ABUGRI</span>
+          <span className="text-xs md:text-sm font-mono tracking-widest">JOSHUA ABUGRI</span>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
         </div>
       </div>

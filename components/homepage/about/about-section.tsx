@@ -9,14 +9,14 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
 const titleVariants: Variants = {
-  hidden: { y: 60, opacity: 0 },
+  hidden: { y: 40, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
@@ -24,30 +24,15 @@ const titleVariants: Variants = {
       type: "spring", 
       damping: 15, 
       stiffness: 100, 
-      duration: 0.8 
+      duration: 0.6 
     },
   },
 };
 
 const photoVariants: Variants = {
-  hidden: { scale: 0.9, opacity: 0 },
+  hidden: { scale: 0.95, opacity: 0 },
   visible: {
     scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-      duration: 0.8,
-      delay: 0.2
-    },
-  },
-};
-
-const textVariants: Variants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
     opacity: 1,
     transition: {
       type: "spring",
@@ -58,134 +43,146 @@ const textVariants: Variants = {
   },
 };
 
+const textVariants: Variants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      duration: 0.5,
+    },
+  },
+};
+
 const skillVariants: Variants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 1, ease: "easeOut" }
+    transition: { duration: 0.8, ease: "easeOut" }
   }
 };
 
 export default function AboutSection() {
-
   return (
     <section
       id="aboutme"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-12 md:py-20 lg:py-24 overflow-hidden"
     >
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 z-0 " />
+      
       {/* Minimal background elements */}
       <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-48 h-48 rounded-full bg-white/5 blur-2xl" />
-        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-white/5 blur-2xl" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-green-400/20 to-blue-400/20 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-gradient-to-l from-green-400/20 to-blue-400/20 blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 gap-12 md:gap-16 items-center"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           
-          {/* Text Section */}
-          <div>
+          {/* Left Column - Text Content */}
+          <div className="lg:w-7/12 space-y-8">
             <motion.div variants={titleVariants}>
-              <h2 
-           className="
+          <motion.h2
+            className="
             text-[clamp(2.5rem,7vw,6rem)] 
-            font-black tracking-[-0.03em] mb-12 md:mb-16 text-center"
-              >
-                About Me
-              </h2>
+            font-black tracking-[-0.03em] mb-12 md:mb-16"
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            About Me
+          </motion.h2>
             </motion.div>
 
             <motion.div
-              className="space-y-6"
+              className="space-y-5"
               variants={textVariants}
             >
-              <p className="text-xl  leading-relaxed opacity-90">
-                I&apos;m <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-bold text-green-400">Graphic Designer</span> with a strong passion for visual communication. My work redefines the norm, skillfully fusing creative visions with a deep understanding of design principles.
+              <p className="text-lg leading-relaxed">
+                I am <span className="font-bold">Joshua Abugri</span>, a creative and detail-oriented <span className="font-semibold text-green-400">Graphic Designer</span> passionate about visual communication. I blend creative vision with design principles to craft impactful solutions.
               </p>
 
-              <p className="text-xl  leading-relaxed opacity-90">
-                I specialize in creating designs that not only look good but also help brands communicate their message clearly and effectively. With experience in <span className="font-medium">branding, logo design, social media graphics, and print design</span>, I&apos;ve worked on projects that require creativity, strategy, and consistency.
+              <p className="text-lg leading-relaxed ">
+                I specialize in creating designs that not only look exceptional but also communicate brand messages clearly. With expertise in <span className="font-bold">branding, logo design, social media graphics, and print design</span>, I deliver creative, strategic, and consistent results.
               </p>
 
-              <p className="text-xl  leading-relaxed opacity-90">
-                I enjoy turning ideas into visually engaging designs that connect with audiences and support business goals. I&apos;m always learning new design trends and techniques to improve my craft.
+              <p className="text-lg leading-relaxed ">
+                I transform ideas into visually engaging designs that resonate with audiences and support business objectives, continually evolving with design trends and techniques.
               </p>
             </motion.div>
 
-{/* Photo Section */}
-<motion.div
-  variants={photoVariants}
-  className="my-12"
->
-  <div className="
-    grid 
-    grid-cols-1 
-    sm:grid-cols-2 
-    lg:grid-cols-3 
-    gap-6
-  ">
-    {[
-      "/profile/1d512beb-ac06-4339-9fe1-253b528d1ce8.jpeg",
-      "/profile/6c2a3c14-0ba5-44ba-8ae4-be0d9783cf55.jpeg",
-      "/profile/54358df2-c21a-4103-b319-1d32be90999f.jpeg",
-    ].map((src, index) => (
-      <motion.div
-        key={index}
-        variants={photoVariants}
-        className="
-          relative 
-          h-[320px] 
-          sm:h-[360px] 
-          lg:h-[420px] 
-          rounded-2xl 
-        "
-      >
-  <Image
-    src={src}
-    alt={`Joshua Abugri - Design work ${index + 1}`}
-    fill
-    className="
-      object-contain
-      scale-110
-      transition-transform duration-700 ease-out
-      group-hover:scale-100
-    "
-    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-  />
-        {/* Soft overlay for consistency */}
-  <div className="
-    absolute inset-4 
-    bg-gradient-to-t from-black/30 to-transparent
-    opacity-80 group-hover:opacity-40
-    transition-opacity duration-500
-  " />
-      </motion.div>
-    ))}
-  </div>
-</motion.div>
+            {/* Single Image Section */}
+            <motion.div
+              variants={photoVariants}
+              className="mt-8"
+            >
+              <div className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-2xl overflow-hidden group">
+                <Image
+                  src="/profile/54358df2-c21a-4103-b319-1d32be90999f.jpg"
+                  alt="Joshua Abugri - Graphic Designer Portfolio"
+                  fill
+                  className="
+                    object-cover
+                    transition-all duration-700 ease-out
+                    group-hover:scale-105
+                  "
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  priority
+                />
+                {/* Gradient overlay */}
+                <div className="
+                  absolute inset-0 
+                  bg-gradient-to-t from-black/70 via-black/30 to-transparent
+                  opacity-80 group-hover:opacity-60
+                  transition-opacity duration-500
+                " />
+                {/* Decorative corner accents */}
+                <div className="absolute top-4 left-4 right-4 bottom-4 border border-white/10 rounded-xl" />
+              </div>
+            </motion.div>
+          </div>
 
+          {/* Right Column - Skills & Stats */}
+          <div className="lg:w-5/12 space-y-8">
             {/* Skills Section */}
             <motion.div 
-              className="mt-12"
+              className="space-y-6"
               variants={textVariants}
             >
-              <h3 className="text-3xl font-bold mb-8">Software & Skills</h3>
+              <div>
+                <h3 className="text-2xl font-bold mb-2 text-white">
+                  Software & Skills
+                </h3>
+                <p className=" text-sm mb-6">
+                  Proficiency across design tools and disciplines
+                </p>
+              </div>
               
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {SKILLS.map((skill) => (
                   <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="">{skill.level}%</span>
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium  text-sm">
+                        {skill.name}
+                      </span>
+                      <span className="font-semibold text-sm">
+                        {skill.level}%
+                      </span>
                     </div>
-                    <div className="h-2 rounded-full overflow-hidden">
+                    <div className="h-1.5 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-green-400 rounded-full"
+                        className="h-full bg-gradient-to-r from-green-500 to-green-300 rounded-full"
                         variants={skillVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -200,40 +197,41 @@ export default function AboutSection() {
                 ))}
               </div>
             </motion.div>
-          </div>
-        </motion.div>
 
-        {/* Experience Summary */}
-        <motion.div
-          className="mt-20 pt-12 border-t border-white/10"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-3 gap-8">
-            <motion.div 
-              className="text-center"
-              variants={textVariants}
+            {/* Stats Cards */}
+            <motion.div
+              className="mt-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <div className="text-2xl font-bold mb-2">3+</div>
-              <div className="text-xs">Years Experience</div>
-            </motion.div>
-            
-            <motion.div 
-              className="text-center"
-              variants={textVariants}
-            >
-              <div className="text-2xl font-bold mb-2">50+</div>
-              <div className="text-xs">Projects Completed</div>
-            </motion.div>
-            
-            <motion.div 
-              className="text-center"
-              variants={textVariants}
-            >
-              <div className="text-2xl font-bold mb-2">100%</div>
-              <div className="text-xs">Client Satisfaction</div>
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { value: "3+", label: "Years Experience", desc: "Design Excellence" },
+                  { value: "50+", label: "Projects", desc: "Successfully Delivered" },
+                  { value: "100%", label: "Satisfaction", desc: "Client Happiness" },
+                ].map((stat, index) => (
+                  <motion.div 
+                    key={index}
+                    className="
+                      p-4 rounded-xl 
+                      transition-colors duration-300
+                    "
+                    variants={textVariants}
+                  >
+                    <div className="text-2xl font-bold mb-1">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs font-bold mb-1">
+                      {stat.label}
+                    </div>
+                    <div className="text-xs ">
+                      {stat.desc}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </motion.div>

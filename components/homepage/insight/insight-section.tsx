@@ -48,7 +48,7 @@ export default function InsightSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 md:px-12 text-center">
         <motion.blockquote
           className={`u
-            text-[clamp(1rem,6vw,0.5rem)] 
+            text-[clamp(1.5rem,7vw,1.0rem)] 
             font-light leading-[1.15] tracking-[-0.02em]
           `}
           variants={insightVariants}
@@ -57,7 +57,7 @@ export default function InsightSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.span variants={lineVariants} className="block">
-            <strong>I believe good design doesn’t start with pixels.</strong>
+            <strong>I believe good design does not start with pixels.</strong>
           </motion.span>
           <motion.span variants={lineVariants} className="block">
             <strong>It starts with people.</strong> Their habits, their quirks,

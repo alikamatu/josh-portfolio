@@ -234,7 +234,7 @@ export default function HeroPage() {
                 <motion.span
                   key={i}
                   custom={i + 6}
-                  className="inline-block hover:text-green-400 dark:hover:text-green-400 transition-colors duration-300"
+                  className="inline-block transition-colors duration-300"
                 >
                   {char}
                 </motion.span>

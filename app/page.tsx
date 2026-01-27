@@ -14,9 +14,9 @@ export default function HomePage() {
         <HeroPage />
       </div>
       <QuoteSection />
+      <AboutSection />
       <WorkSection />
       <InsightSection />
-      <AboutSection />
       <Footer />
     </main>
   );
