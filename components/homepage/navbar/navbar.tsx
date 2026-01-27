@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/providers/theme-provider";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_ITEMS = [
   { label: "Work", href: "#portfolio", delay: 0.1 },
@@ -32,7 +33,7 @@ export default function Navbar() {
           >
             <div className="w-2 h-2 rounded-full bg-green-400" />
             <Link href="/" className="font-bold tracking-tight text-2xl">
-              Joshua<span>.</span>Abugri
+            <Image src="/profile/logo.png" alt="Joshuas Logo" width={80} height={80} className="object-contain"/>
             </Link>
           </motion.div>
 

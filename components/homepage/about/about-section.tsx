@@ -143,7 +143,6 @@ export default function AboutSection() {
           sm:h-[360px] 
           lg:h-[420px] 
           rounded-2xl 
-        bg-black/5
         "
       >
   <Image
@@ -159,8 +158,8 @@ export default function AboutSection() {
     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   />
         {/* Soft overlay for consistency */}
-          <div className="
-    absolute inset-0 
+  <div className="
+    absolute inset-4 
     bg-gradient-to-t from-black/30 to-transparent
     opacity-80 group-hover:opacity-40
     transition-opacity duration-500

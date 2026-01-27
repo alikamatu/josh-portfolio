@@ -11,6 +11,7 @@ import {
   Facebook,
 } from "lucide-react";
 import { SOCIAL_LINKS } from "@/utils/constants";
+import Image from "next/image";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -42,6 +43,11 @@ export default function Footer() {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto px-6 py-16 flex flex-col items-center text-center gap-10"
       >
+        {/* Logo */}
+        <div className="flex">
+        <Image width={120} height={120} src="/profile/logo.png" alt="Joshuas Logo" className="object-contain" />
+        </div>
+
         {/* Brand */}
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground max-w-md">
