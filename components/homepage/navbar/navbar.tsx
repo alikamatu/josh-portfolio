@@ -147,7 +147,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 {/* <Download className="w-5 h-5" /> */}
-                <span>Download Resume</span>
+                <span>Resume</span>
               </motion.a>
             </div>
           </motion.div>
