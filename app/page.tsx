@@ -1,5 +1,4 @@
 import AboutSection from "@/components/homepage/about/about-section";
-import ContactSection from "@/components/homepage/contact/contact-section";
 import Footer from "@/components/homepage/footer/footer";
 import HeroPage from "@/components/homepage/hero/hero-page";
 import InsightSection from "@/components/homepage/insight/insight-section";

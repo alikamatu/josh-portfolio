@@ -143,19 +143,28 @@ export default function AboutSection() {
           sm:h-[360px] 
           lg:h-[420px] 
           rounded-2xl 
-          overflow-hidden
+        bg-black/5
         "
       >
-        <Image
-          src={src}
-          alt={`Joshua Abugri - Design work ${index + 1}`}
-          fill
-          className="object-cover transition-transform duration-700 hover:object-fit"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-
+  <Image
+    src={src}
+    alt={`Joshua Abugri - Design work ${index + 1}`}
+    fill
+    className="
+      object-contain
+      scale-110
+      transition-transform duration-700 ease-out
+      group-hover:scale-100
+    "
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  />
         {/* Soft overlay for consistency */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+          <div className="
+    absolute inset-0 
+    bg-gradient-to-t from-black/30 to-transparent
+    opacity-80 group-hover:opacity-40
+    transition-opacity duration-500
+  " />
       </motion.div>
     ))}
   </div>
