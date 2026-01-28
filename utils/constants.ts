@@ -50,7 +50,7 @@ export const PROJECTS_PER_PAGE = 4;
 export interface Project {
   id: number;
   title: string;
-  category: string;
+  category: string[];
   image: string;
   description: string;
   client: string;

@@ -32,7 +32,6 @@ export default function QuoteSection() {
   return (
     <section
       className="relative py-16 md:py-24 overflow-hidden"
-      style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}
     >
       {/* Enhanced background with geometric patterns */}
       <div className="absolute inset-0 z-0 opacity-[0.08] dark:opacity-[0.12] pointer-events-none">
@@ -47,7 +46,7 @@ export default function QuoteSection() {
             maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5" />
+        <div className="absolute inset-0" />
       </div>
 
       {/* Designer floating elements */}
@@ -119,9 +118,9 @@ export default function QuoteSection() {
       {/* Designer signature at bottom */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-20 dark:opacity-30">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+          <div className="w-12 md:w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
           <span className="text-xs md:text-sm font-mono tracking-widest">JOSHUA ABUGRI</span>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+          <div className="w-12 md:w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
         </div>
       </div>
     </section>

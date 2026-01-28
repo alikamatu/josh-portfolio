@@ -168,7 +168,7 @@ export default function HeroPage() {
                 ))}
               </div>
               
-              {"Joshua".split("").map((char, i) => (
+              {"JOSHUA".split("").map((char, i) => (
                 <motion.span
                   key={i}
                   custom={i}

@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import ProjectCard from "./project-card";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CategoryFilter from "./category-filter";
 import Pagination from "./pagination";
 import { projectData } from "@/utils/projectData";
@@ -48,7 +48,7 @@ export default function WorkSection() {
   const projectsPerPage = 4;
 
   const filteredProjects = activeCategory
-    ? projectData.filter((p) => p.category === activeCategory)
+    ? projectData.filter((p) => p.category.includes(activeCategory))
     : projectData;
 
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
@@ -131,6 +131,7 @@ export default function WorkSection() {
               key={project.id}
               project={{
                 ...project,
+                category: Array.isArray(project.category) ? project.category.join(", ") : project.category,
                 link: `/project/${project.id}` // Updated link structure
               }}
               isReversed={index % 2 === 1}
