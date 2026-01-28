@@ -259,7 +259,7 @@ function InfoCard({ project }: { project: Project }) {
       <div className="space-y-6">
         <InfoRow label="Client" value={project.client} />
         <InfoRow label="Industry" value={project.industry} />
-        <InfoRow label="Category" value={project.category} />
+        <InfoRow label="Category" value={project.category.join(", ")} />
         <div>
           <div className="text-sm uppercase opacity-70 mb-2">Tools Used</div>
           {project.tools.map((tool: string, i: number) => (
