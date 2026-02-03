@@ -1,5 +1,6 @@
 import AboutSection from "@/components/homepage/about/about-section";
 import Footer from "@/components/homepage/footer/footer";
+import GalleryPage from "@/components/homepage/gallery/gallary";
 import HeroPage from "@/components/homepage/hero/hero-page";
 import InsightSection from "@/components/homepage/insight/insight-section";
 import Navbar from "@/components/homepage/navbar/navbar";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <QuoteSection />
       <AboutSection />
       <WorkSection />
+      <GalleryPage />
       <InsightSection />
       <Footer />
     </main>
