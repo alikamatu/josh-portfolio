@@ -38,11 +38,10 @@ export const CLIENT_LIST = [
 
 export const WORK_CATEGORIES = [
   "All",
-  "Brand Identity",
-  "Logo Design", 
-  "Print Design",
-  "Social Media",
-  "Digital Graphics"
+  // "Matte Paintings",
+  "Logo", 
+  "Social And Print Graphics",
+  // "Website Banners & UI",
 ] as const;
 
 export const PROJECTS_PER_PAGE = 4;
