@@ -5,6 +5,7 @@ import HeroPage from "@/components/homepage/hero/hero-page";
 import InsightSection from "@/components/homepage/insight/insight-section";
 import Navbar from "@/components/homepage/navbar/navbar";
 import QuoteSection from "@/components/homepage/quote/quote-section";
+import VideoSection from "@/components/homepage/video/video-section";
 import WorkSection from "@/components/homepage/work/work-section";
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <QuoteSection />
       <AboutSection />
       <WorkSection />
+      <VideoSection />
       <GalleryPage />
       <InsightSection />
       <Footer />
