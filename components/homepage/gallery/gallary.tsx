@@ -109,7 +109,7 @@ export default function GalleryPage() {
       if (!currentCategory) return prev;
 
       let newIndex = direction === "next" ? prev.currentIndex + 1 : prev.currentIndex - 1;
-      
+
       // Loop around
       if (newIndex >= currentCategory.images.length) newIndex = 0;
       if (newIndex < 0) newIndex = currentCategory.images.length - 1;
@@ -135,13 +135,13 @@ export default function GalleryPage() {
   };
 
   const fadeUp: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { type: "spring", damping: 18, stiffness: 100 },
-  },
-};
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", damping: 18, stiffness: 100 },
+    },
+  };
 
   const sectionVariants: Variants = {
     hidden: (direction: number) => ({
@@ -189,12 +189,12 @@ export default function GalleryPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12 md:mb-16"
           >
-          <motion.h2
-            variants={fadeUp}
-            className="text-center text-[clamp(2.4rem,7vw,5.5rem)] font-black tracking-[-0.03em] mb-14"
-          >
-            Gallery
-          </motion.h2>
+            <motion.h2
+              variants={fadeUp}
+              className="text-center text-[clamp(2.4rem,7vw,5.5rem)] font-black tracking-[-0.03em] mb-14"
+            >
+              Gallery
+            </motion.h2>
           </motion.div>
 
           {/* Categories */}
@@ -251,18 +251,6 @@ export default function GalleryPage() {
                 </div>
               </motion.section>
             ))}
-          </motion.div>
-
-          {/* Footer Note */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-20 pt-8 border-t border-gray-800 text-center"
-          >
-            <p className="text-gray-500 text-sm">
-              Want to see more? <a href="#contact" className="text-green-400 hover:text-green-300 transition-colors">Get in touch</a> for full portfolio access.
-            </p>
           </motion.div>
         </div>
       </div>
@@ -332,7 +320,7 @@ export default function GalleryPage() {
               <div className="absolute bottom-4 left-0 right-0 text-center">
                 <div className="inline-block px-4 py-2 bg-gray-900/80 backdrop-blur-sm rounded-lg">
                   <p className="text-white text-sm">
-                    {CATEGORIES.find(c => c.id === lightbox.currentCategory)?.title} • 
+                    {CATEGORIES.find(c => c.id === lightbox.currentCategory)?.title} •
                     Image {lightbox.currentIndex + 1} of{" "}
                     {CATEGORIES.find(c => c.id === lightbox.currentCategory)?.images.length}
                   </p>

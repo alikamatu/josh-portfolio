@@ -53,8 +53,8 @@ export default function VideoSection() {
                         variants={titleVariants}
                         className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter mb-6"
                     >
-                        Motion
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">.</span>
+                        Motion Graphics
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">.</span>
                     </motion.h2>
                     <motion.p
                         variants={titleVariants}
