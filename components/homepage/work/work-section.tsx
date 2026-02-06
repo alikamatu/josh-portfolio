@@ -105,7 +105,7 @@ export default function WorkSection() {
         </motion.div>
 
         {/* Category Filters */}
-        {/* <motion.div
+        <motion.div
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
@@ -116,7 +116,7 @@ export default function WorkSection() {
             activeCategory={activeCategory}
             onCategoryChange={handleCategoryChange}
           />
-        </motion.div> */}
+        </motion.div>
 
         {/* Project Grid */}
         <motion.div
