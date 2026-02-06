@@ -24,11 +24,11 @@ const titleVariants: Variants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { 
-      type: "spring", 
-      damping: 15, 
-      stiffness: 100, 
-      duration: 0.8 
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
+      duration: 0.8
     },
   },
 };
@@ -105,7 +105,7 @@ export default function WorkSection() {
         </motion.div>
 
         {/* Category Filters */}
-        <motion.div
+        {/* <motion.div
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
@@ -116,7 +116,7 @@ export default function WorkSection() {
             activeCategory={activeCategory}
             onCategoryChange={handleCategoryChange}
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Project Grid */}
         <motion.div
