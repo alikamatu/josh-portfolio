@@ -24,11 +24,11 @@ const titleVariants: Variants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { 
-      type: "spring", 
-      damping: 15, 
-      stiffness: 100, 
-      duration: 0.8 
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
+      duration: 0.8
     },
   },
 };

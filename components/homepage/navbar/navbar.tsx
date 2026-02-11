@@ -33,7 +33,7 @@ export default function Navbar() {
           >
             <div className="w-2 h-2 rounded-full bg-green-400" />
             <Link href="/" className="font-bold tracking-tight text-2xl">
-            <Image src="/profile/logo.png" alt="Joshuas Logo" width={80} height={80} className="object-contain"/>
+              <Image src="/profile/logo.png" alt="Joshuas Logo" width={80} height={80} className="object-contain" />
             </Link>
           </motion.div>
 
@@ -65,7 +65,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-200 text-black"
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-black dark:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
@@ -92,7 +92,7 @@ export default function Navbar() {
           <div className="flex md:hidden items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full"
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-black dark:text-white transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
