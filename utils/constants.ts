@@ -20,10 +20,8 @@ export const SKILLS = [
   { name: "Adobe InDesign", level: 80 },
   { name: "Adobe Premiere Pro", level: 75 },
   { name: "Adobe After Effects", level: 70 },
-  { name: "Brand Identity", level: 90 },
-  { name: "Logo Design", level: 95 },
-  { name: "Print Design", level: 85 },
-  { name: "Social Media Graphics", level: 88 },
+  { name: "Figma", level: 70 },
+  { name: "Adobe XD", level: 75 },
 ] as const;
 
 export const FIRST_NAME = "Joshua";
@@ -41,6 +39,8 @@ export const WORK_CATEGORIES = [
   // "Matte Paintings",
   "Logo", 
   "Social And Print Graphics",
+  "Web Design",
+  "Matte Painting",
   // "Website Banners & UI",
 ] as const;
 

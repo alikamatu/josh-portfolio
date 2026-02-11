@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import ProjectCard from "./project-card";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import CategoryFilter from "./category-filter";
 import Pagination from "./pagination";
 import { projectData } from "@/utils/projectData";
@@ -45,6 +45,7 @@ const fadeInVariants: Variants = {
 export default function WorkSection() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const sectionRef = useRef<HTMLElement>(null);
   const projectsPerPage = 4;
 
   const filteredProjects = activeCategory
@@ -57,7 +58,7 @@ export default function WorkSection() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleCategoryChange = (category: string | null) => {
@@ -71,6 +72,7 @@ export default function WorkSection() {
   return (
     <section
       id="portfolio"
+      ref={sectionRef}
       className="relative py-16 md:py-24 overflow-hidden"
     >
       {/* Subtle background elements - no gradients */}

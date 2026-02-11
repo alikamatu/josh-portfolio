@@ -75,7 +75,7 @@ export default function CategoryFilter({
                 ${
                   isActive
                     ? "bg-white text-black border-white"
-                    : "border-white/20 hover:border-white/40"
+                    : "border-gray-400 hover:border-white/40"
                 }
               `}
             >
